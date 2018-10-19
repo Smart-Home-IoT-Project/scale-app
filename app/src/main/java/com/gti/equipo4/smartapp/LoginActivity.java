@@ -2,7 +2,7 @@ package com.gti.equipo4.smartapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -40,7 +40,9 @@ public class LoginActivity  extends AppCompatActivity {
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true)
                                     .build(),
-                            new AuthUI.IdpConfig.GoogleBuilder().build()    )) //<<<<<<<<<<<<<
+                            new AuthUI.IdpConfig.GoogleBuilder().build()    ))
+                    .setTheme(R.style.LoginTheme)
+                    .setLogo(R.drawable.logo)
                     .setIsSmartLockEnabled(false)
                     .build(), RC_SIGN_IN);
         }
