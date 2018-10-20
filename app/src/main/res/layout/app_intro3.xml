@@ -17,7 +17,7 @@
         android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingRight="29dp"
-        android:text="@string/sex"
+        android:text="@string/select_devie"
         android:textColor="#ffffff"
         android:textSize="27sp"
         android:textStyle="bold" />
@@ -33,8 +33,8 @@
         android:paddingRight="64dp"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        app:srcCompat="@drawable/malefemaleexample"
-        tools:srcCompat="@drawable/malefemaleexample" />
+        app:srcCompat="@drawable/scaleicon"
+        tools:srcCompat="@drawable/scaleicon" />
 
     <TextView
         android:layout_width="fill_parent"
