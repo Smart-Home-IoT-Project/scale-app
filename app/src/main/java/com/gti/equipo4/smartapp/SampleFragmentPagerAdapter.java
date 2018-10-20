@@ -22,7 +22,17 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PageFragment.newInstance(position + 1);
+        switch (position){
+            case 0:
+                TabFragment1 tab1 = new TabFragment1();
+                return tab1;
+            case 1:
+                return PageFragment.newInstance(position + 1);
+            case 2:
+                return PageFragment.newInstance(position + 1);
+            default:
+                return null;
+        }
     }
 
     @Override
