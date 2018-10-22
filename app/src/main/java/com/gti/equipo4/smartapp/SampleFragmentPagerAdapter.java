@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    final int PAGE_COUNT = 2;
+    private String tabTitles[] = new String[] { "PESO", "ALTURA" };
     private Context context;
 
     public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
@@ -27,9 +27,8 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
                 TabFragment1 tab1 = new TabFragment1();
                 return tab1;
             case 1:
-                return PageFragment.newInstance(position + 1);
-            case 2:
-                return PageFragment.newInstance(position + 1);
+                TabFragment2 tab2 = new TabFragment2();
+                return tab2;
             default:
                 return null;
         }
