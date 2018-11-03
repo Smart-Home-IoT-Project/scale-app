@@ -1,11 +1,11 @@
-package com.gti.equipo4.smartapp;
+package com.gti.equipo4.smartapp.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.github.paolorotolo.appintro.AppIntro;
-import com.github.paolorotolo.appintro.AppIntroFragment;
-import com.github.paolorotolo.appintro.model.SliderPage;
+import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.fragments.initialWizard.SampleSlide;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

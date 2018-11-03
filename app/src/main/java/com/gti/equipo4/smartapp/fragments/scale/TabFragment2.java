@@ -1,9 +1,11 @@
-package com.gti.equipo4.smartapp;
+package com.gti.equipo4.smartapp.fragments.scale;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.gti.equipo4.smartapp.R;
 
 import androidx.fragment.app.Fragment;
 
