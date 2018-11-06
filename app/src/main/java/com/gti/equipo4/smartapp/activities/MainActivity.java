@@ -2,32 +2,37 @@ package com.gti.equipo4.smartapp.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.LruCache;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.gti.equipo4.smartapp.R;
-import com.gti.equipo4.smartapp.fragments.menu.scale;
-import com.gti.equipo4.smartapp.fragments.menu.home;
-import com.gti.equipo4.smartapp.fragments.menu.sensors;
-import com.gti.equipo4.smartapp.fragments.scale.SampleFragmentPagerAdapter;
-
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
 
-import android.view.Menu;
-import android.view.MenuItem;
+import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.fragments.menu.scale;
+import com.gti.equipo4.smartapp.fragments.menu.home;
+import com.gti.equipo4.smartapp.fragments.menu.sensors;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -79,14 +84,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (savedInstanceState == null) {
-            Fragment newFragment = new home();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.content_frame, newFragment);
-            ft.addToBackStack(null);
-            ft.commit();
-        }
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +102,43 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Mostrar perfil de usuario en DrawerMenu
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
+        TextView nombre = headerView.findViewById(R.id.nombre);
+        nombre.setText(usuario.getDisplayName());
+        TextView correo = headerView.findViewById(R.id.correo);
+        correo.setText(usuario.getEmail());
+
+        // Inicialización Volley (Hacer solo una vez en Singleton o Applicaction)
+        RequestQueue colaPeticiones = Volley.newRequestQueue(this.getApplicationContext());
+        ImageLoader lectorImagenes = new ImageLoader(colaPeticiones, new ImageLoader.ImageCache() {
+            private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(10);
+            public void putBitmap(String url, Bitmap bitmap) {
+                cache.put(url, bitmap);
+            }
+            public Bitmap getBitmap(String url) {
+                return cache.get(url);
+            }
+        });
+
+        // Foto de usuario
+        Uri urlImagen = usuario.getPhotoUrl();
+        if (urlImagen != null) {
+            NetworkImageView fotoUsuario = headerView.findViewById(R.id.imagen);
+            fotoUsuario.setImageUrl(urlImagen.toString(), lectorImagenes);
         }
+
+        // cargar fragment inicial
+        if (savedInstanceState == null) {
+            Fragment newFragment = new home();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.content_frame, newFragment);
+            ft.addToBackStack(null);
+            ft.commit();
+        }
+
+    }
 
     @Override
     public void onBackPressed() {
