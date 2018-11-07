@@ -1,5 +1,6 @@
 package com.gti.equipo4.smartapp.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -12,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -21,6 +25,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
@@ -194,8 +201,32 @@ public class MainActivity extends AppCompatActivity
             fragment = new scale();
         } else if (id == R.id.nav_sensors) {
             fragment = new sensors();
+        }
 
-        } else if (id == R.id.nav_settings) {
+        if (id == R.id.nav_settings) {
+
+        }
+
+        if (id == R.id.nav_cerrar_sesion) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Cerrar sesión")
+                    .setMessage("¿Quiere cerrar la sesión?")
+                    .setNegativeButton("cancelar", null)
+                    .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            AuthUI.getInstance().signOut(MainActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                            | Intent.FLAG_ACTIVITY_NEW_TASK
+                                            | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            });
+                        }})
+                    .show();
 
         }
 
