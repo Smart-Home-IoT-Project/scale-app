@@ -1,5 +1,6 @@
 package com.gti.equipo4.smartapp.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
@@ -206,17 +208,26 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.nav_cerrar_sesion) {
-            AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                            | Intent.FLAG_ACTIVITY_NEW_TASK
-                            | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
-                    finish();
-                }
-            });
+            new AlertDialog.Builder(this)
+                    .setTitle("Cerrar sesión")
+                    .setMessage("¿Quiere cerrar la sesión?")
+                    .setNegativeButton("cancelar", null)
+                    .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            AuthUI.getInstance().signOut(MainActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                            | Intent.FLAG_ACTIVITY_NEW_TASK
+                                            | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            });
+                        }})
+                    .show();
+
         }
 
         if (fragment != null) {
