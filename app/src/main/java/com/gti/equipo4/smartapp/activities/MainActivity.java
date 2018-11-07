@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.preference.PreferenceManager;
 import android.util.LruCache;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+=======
+>>>>>>> 15256ff5a435b51152258535bd587ebb55f556f0
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -19,15 +22,33 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+<<<<<<< HEAD
+=======
+
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.google.android.material.navigation.NavigationView;
+import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.adapters.Weights;
+import com.gti.equipo4.smartapp.adapters.WeigthsFirestoreUI;
+import com.gti.equipo4.smartapp.fragments.menu.scale;
+import com.gti.equipo4.smartapp.fragments.menu.home;
+import com.gti.equipo4.smartapp.fragments.menu.sensors;
+
+>>>>>>> 15256ff5a435b51152258535bd587ebb55f556f0
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+<<<<<<< HEAD
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
+=======
+import androidx.recyclerview.widget.RecyclerView;
+>>>>>>> 15256ff5a435b51152258535bd587ebb55f556f0
 
 import com.gti.equipo4.smartapp.R;
 import com.gti.equipo4.smartapp.fragments.menu.scale;
@@ -37,11 +58,16 @@ import com.gti.equipo4.smartapp.fragments.menu.sensors;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public boolean isFirstStart;
+    private RecyclerView recyclerView;
+    public Weights adaptador;
+    public static WeigthsFirestoreUI adaptador2;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //Declare a new thread to do a preference check
         Thread t = new Thread(new Runnable() {
@@ -201,4 +227,9 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /*@Override public void onDestroy() {
+        super.onDestroy();
+        adaptador2.stopListening();
+    }*/
 }
