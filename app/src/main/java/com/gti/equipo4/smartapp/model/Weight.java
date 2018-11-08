@@ -1,27 +1,49 @@
 package com.gti.equipo4.smartapp.model;
 
 public class Weight {
-    private String nombre;
+    private long peso;
+    private long altura;
+    private String hora;
 
-    public Weight(String nombre) {
-        this.nombre = nombre;
+    public Weight() {}
+
+    public Weight(long peso,long altura,String hora) {
+        this.peso = peso;
+        this.hora = hora;
+        this.altura = altura;
     }
-    public Weight() {
 
+
+    public long getPeso() {
+        return peso;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setPeso(long peso) {
+        this.peso = peso;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public long getAltura() {
+        return altura;
+    }
+
+    public void setAltura(long altura) {
+        this.altura = altura;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     @Override
     public String toString() {
         return "Weight{" +
-                "nombre='" + nombre + '\'' +
+                "peso='" + peso + '\'' +
+                ", altura='" + altura + '\'' +
+                ", hora='" + hora + '\'' +
                 '}';
     }
 }

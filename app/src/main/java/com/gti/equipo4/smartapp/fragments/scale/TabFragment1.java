@@ -36,7 +36,7 @@ public class TabFragment1 extends Fragment {
 
 
                 Query query = FirebaseFirestore.getInstance()
-                        .collection("Medidas")
+                        .collection("Bascula")
                         .limit(50);
                 FirestoreRecyclerOptions<Weight> opciones = new FirestoreRecyclerOptions
                         .Builder<Weight>().setQuery(query, Weight.class).build();
