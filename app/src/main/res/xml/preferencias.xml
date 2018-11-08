@@ -38,7 +38,7 @@
         android:selectable="false"
         android:summary="Somos un grupo de alumnos de Jesus Tomas del Grado en Tecnologías Interactivas de la UPV" />
         <Preference
-        android:summary="0.2"
+        android:summary="0.2.1"
         android:title="Version" />
         <Preference android:title="Ver licencia">
             <intent
