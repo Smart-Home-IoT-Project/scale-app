@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".activities.IntroActivity"
             android:theme="@style/InitialSetupTheme" />
+        <activity android:name=".activities.PreferenciasActivity" />
 
     </application>
 
