@@ -37,10 +37,10 @@ public class SampleFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                TabFragment1 tab1 = new TabFragment1();
+                TabFragment2 tab1 = new TabFragment2();
                 return tab1;
             case 1:
-                TabFragment2 tab2 = new TabFragment2();
+                TabFragment1 tab2 = new TabFragment1();
                 return tab2;
             default:
                 return null;

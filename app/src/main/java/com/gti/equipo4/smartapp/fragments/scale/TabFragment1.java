@@ -28,7 +28,7 @@ public class TabFragment1 extends Fragment {
 
 
 
-        final View view = inflater.inflate(R.layout.tab_fragment_1, container, false);
+        final View view = inflater.inflate(R.layout.tab_fragment_2, container, false);
         final FragmentActivity c = getActivity();
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(c);
