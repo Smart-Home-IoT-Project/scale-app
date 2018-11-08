@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferencias_principal" >
+    <PreferenceScreen
+        android:key="preferencias_unidades"
+        android:title="unidades">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/preferencias_peso"
+            android:entryValues="@array/preferencias_peso"
+            android:key="list_preference_1"
+            android:title="Unidades de peso" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/preferencias_altura"
+            android:entryValues="@array/preferencias_altura"
+            android:key="list_preference_2"
+            android:title="Unidades de altura" />
+    </PreferenceScreen>
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="mandar_notificaciones"
+        android:title="Notificaciones" />
+</PreferenceScreen>
