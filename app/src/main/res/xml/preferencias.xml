@@ -5,25 +5,29 @@
     <PreferenceScreen
         android:icon="@drawable/ic_ruller"
         android:key="preferencias_unidades"
-        android:title="unidades">
+        android:title="unidades"
+        android:summary="Establece que tipo de unidad quieres visualizar">
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/preferencias_peso"
             android:entryValues="@array/preferencias_peso"
             android:icon="@drawable/ic_scale"
             android:key="list_preference_1"
-            android:title="Unidades de peso" />
+            android:title="Unidades de peso"
+            android:summary="Establece unidades de peso"/>
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/preferencias_altura"
             android:entryValues="@array/preferencias_altura"
             android:icon="@drawable/ic_ruller"
             android:key="list_preference_2"
-            android:title="Unidades de altura" />
+            android:title="Unidades de altura"
+            android:summary="Establece unidades de medida"/>
     </PreferenceScreen>
     <SwitchPreference
         android:defaultValue="true"
         android:icon="?android:attr/alertDialogIcon"
         android:key="mandar_notificaciones"
-        android:title="Notificaciones" />
+        android:title="Notificaciones"
+        android:summary="Activa o desactiva las notificaciones"/>
 </PreferenceScreen>
