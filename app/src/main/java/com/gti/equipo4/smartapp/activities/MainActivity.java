@@ -201,7 +201,9 @@ public class MainActivity extends AppCompatActivity
             fragment = new scale();
         } else if (id == R.id.nav_sensors) {
             fragment = new sensors();
-        } else if (id == R.id.nav_acercade) {
+        }
+
+        if (id == R.id.nav_acercade) {
             new AlertDialog.Builder(this)
                     .setTitle("Acerca de").setMessage("Esto es una aplicación IoT dedicada a hacerte la vida mas facil")
                     .setNegativeButton("Cerrar", null)
@@ -209,7 +211,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.nav_settings) {
-
+            Intent i = new Intent(this, PreferenciasActivity.class);
+            startActivity(i);
         }
 
         if (id == R.id.nav_cerrar_sesion) {
