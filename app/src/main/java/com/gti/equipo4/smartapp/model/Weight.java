@@ -10,8 +10,6 @@ public class Weight {
 
     }
 
-
-
     public String getNombre() {
         return nombre;
     }
@@ -22,7 +20,7 @@ public class Weight {
 
     @Override
     public String toString() {
-        return "Datos{" +
+        return "Weight{" +
                 "nombre='" + nombre + '\'' +
                 '}';
     }

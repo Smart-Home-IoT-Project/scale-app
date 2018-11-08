@@ -27,6 +27,7 @@ public class Weights extends
     //Creamos nuestro ViewHolder, con los tipos de elementos a modificar
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nombre;
+
         public ViewHolder(View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.weightText);
@@ -48,6 +49,7 @@ public class Weights extends
 // Personalizamos un ViewHolder a partir de un lugar
 public static void personalizaVista(ViewHolder holder, Weight lugar) {
     holder.nombre.setText(lugar.getNombre());
+
 }
     // Indicamos el número de elementos de la lista
     @Override public int getItemCount() {
