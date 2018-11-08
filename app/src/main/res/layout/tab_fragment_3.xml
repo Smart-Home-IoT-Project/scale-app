@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/peso"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -77,24 +77,24 @@
         android:gravity="center"
         android:text="8 kg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintEnd_toStartOf="@+id/altura"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ultimo_peso" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/altura"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="180 cm"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView19"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintEnd_toStartOf="@+id/ICM"
+        app:layout_constraintStart_toEndOf="@+id/peso"
         app:layout_constraintTop_toBottomOf="@+id/ultima_altura" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/ICM"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -104,7 +104,7 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/altura"
         app:layout_constraintTop_toBottomOf="@+id/imc" />
 
     <androidx.constraintlayout.widget.Guideline
