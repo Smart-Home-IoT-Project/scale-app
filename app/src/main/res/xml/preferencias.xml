@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferencias_principal" >
+    <PreferenceCategory android:title="General">
+    <PreferenceScreen
+        android:icon="@drawable/ic_ruller"
+        android:key="preferencias_unidades"
+        android:title="unidades"
+        android:summary="Establece que tipo de unidad quieres visualizar">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/preferencias_peso"
+            android:entryValues="@array/preferencias_peso"
+            android:icon="@drawable/ic_scale"
+            android:key="list_preference_1"
+            android:title="Unidades de peso"
+            android:summary="Establece unidades de peso"/>
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/preferencias_altura"
+            android:entryValues="@array/preferencias_altura"
+            android:icon="@drawable/ic_ruller"
+            android:key="list_preference_2"
+            android:title="Unidades de altura"
+            android:summary="Establece unidades de medida"/>
+    </PreferenceScreen>
+    <SwitchPreference
+        android:defaultValue="true"
+        android:icon="?android:attr/alertDialogIcon"
+        android:key="mandar_notificaciones"
+        android:title="Notificaciones"
+        android:summary="Activa o desactiva las notificaciones"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Acerca de">
+
+        <Preference
+        android:selectable="false"
+        android:summary="Somos un grupo de alumnos de Jesus Tomas del Grado en Tecnologías Interactivas de la UPV" />
+        <Preference
+        android:summary="0.2.1"
+        android:title="Version" />
+        <Preference android:title="Ver licencia">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://es.wikipedia.org/wiki/Beerware" />
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
