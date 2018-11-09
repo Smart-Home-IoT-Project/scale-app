@@ -1,32 +1,32 @@
 package com.gti.equipo4.smartapp.model;
 
 public class Weight {
-    private long peso;
-    private long altura;
+    private double peso;
+    private int altura;
     private String hora;
 
     public Weight() {}
 
-    public Weight(long peso,long altura,String hora) {
+    public Weight(double peso,int altura,String hora) {
         this.peso = peso;
         this.hora = hora;
         this.altura = altura;
     }
 
 
-    public long getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(long peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
-    public long getAltura() {
+    public int getAltura() {
         return altura;
     }
 
-    public void setAltura(long altura) {
+    public void setAltura(int altura) {
         this.altura = altura;
     }
 
