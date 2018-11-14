@@ -1,4 +1,4 @@
-package com.gti.equipo4.smartapp;
+package com.gti.equipo4.smartapp.fragments.initialWizard;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;

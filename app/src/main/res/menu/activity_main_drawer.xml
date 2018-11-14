@@ -5,33 +5,37 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="Inicio" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_scale"
+            android:icon="@drawable/ic_scale"
+            android:title="Báscula" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_sensors"
+            android:icon="@drawable/ic_menu_sensors"
+            android:title="Sensores" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Otros">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Ajustes" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_acercade"
+                android:icon="@drawable/ic_simbolo_de_informacion"
+                android:title="Acerca de..." />
+        </menu>
+    </item>
+
+    <item android:title="Usuario">
+        <menu>
+            <item android:id="@+id/nav_cerrar_sesion"
+                android:icon="@android:drawable/ic_dialog_alert"
+                android:title="Cerrar sesión" />
         </menu>
     </item>
 

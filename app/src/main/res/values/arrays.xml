@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preferencias_altura">
+        <item>Métrico (m)</item>
+        <item>Imperial (pies)</item>
+    </string-array>
+    <string-array name="preferencias_peso">
+        <item>Métrico (kg)</item>
+        <item>Imperial (libras)</item>
+    </string-array>
+</resources>
