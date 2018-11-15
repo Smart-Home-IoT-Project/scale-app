@@ -71,51 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        // Mostrar perfil de usuario en DrawerMenu
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
-        TextView nombre = headerView.findViewById(R.id.nombre);
-        nombre.setText(usuario.getDisplayName());
-        TextView correo = headerView.findViewById(R.id.correo);
-        correo.setText(usuario.getEmail());
-
-        // Inicialización Volley (Hacer solo una vez en Singleton o Applicaction)
-        RequestQueue colaPeticiones = Volley.newRequestQueue(this.getApplicationContext());
-        ImageLoader lectorImagenes = new ImageLoader(colaPeticiones, new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(10);
-            public void putBitmap(String url, Bitmap bitmap) {
-                cache.put(url, bitmap);
-            }
-            public Bitmap getBitmap(String url) {
-                return cache.get(url);
-            }
-        });
-
-        // Foto de usuario
-        Uri urlImagen = usuario.getPhotoUrl();
-        if (urlImagen != null) {
-            NetworkImageView fotoUsuario = headerView.findViewById(R.id.imagen);
-            fotoUsuario.setImageUrl(urlImagen.toString(), lectorImagenes);
-        }*/
 
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
