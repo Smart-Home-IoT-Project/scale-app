@@ -17,36 +17,15 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TabFragment1 extends Fragment {
+public class TabFragment3 extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     public static WeigthsFirestoreUI adaptador2;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //return inflater.inflate(R.layout.tab_fragment_1, container, false);
-
-
-
-        final View view = inflater.inflate(R.layout.tab_fragment_2, container, false);
-        final FragmentActivity c = getActivity();
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        layoutManager = new LinearLayoutManager(c);
-        recyclerView.setLayoutManager(layoutManager);
-
-
-                Query query = FirebaseFirestore.getInstance()
-                        .collection("Bascula")
-                        .limit(50);
-                FirestoreRecyclerOptions<Weight> opciones = new FirestoreRecyclerOptions
-                        .Builder<Weight>().setQuery(query, Weight.class).build();
-                adaptador2 = new WeigthsFirestoreUI(opciones);
-
-                        recyclerView.setAdapter(adaptador2);
-                        adaptador2.startListening();
-
-
-        return view;
+        return inflater.inflate(R.layout.tab_fragment_3, container, false);
+        //return view;
 
     }
 }

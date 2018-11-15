@@ -1,51 +1,24 @@
 package com.gti.equipo4.smartapp.activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.LruCache;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import com.google.android.material.tabs.TabLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.gti.equipo4.smartapp.R;
 import com.gti.equipo4.smartapp.adapters.Weights;
 import com.gti.equipo4.smartapp.adapters.WeigthsFirestoreUI;
-import com.gti.equipo4.smartapp.fragments.menu.scale;
-import com.gti.equipo4.smartapp.fragments.menu.home;
-import com.gti.equipo4.smartapp.fragments.menu.sensors;
+import com.gti.equipo4.smartapp.fragments.scale.SampleFragmentPagerAdapter;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     public boolean isFirstStart;
     private RecyclerView recyclerView;
     public Weights adaptador;
@@ -98,7 +71,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,27 +115,21 @@ public class MainActivity extends AppCompatActivity
         if (urlImagen != null) {
             NetworkImageView fotoUsuario = headerView.findViewById(R.id.imagen);
             fotoUsuario.setImageUrl(urlImagen.toString(), lectorImagenes);
-        }
+        }*/
 
-        // cargar fragment inicial
-        if (savedInstanceState == null) {
-            Fragment newFragment = new home();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.content_frame, newFragment);
-            ft.addToBackStack(null);
-            ft.commit();
-        }
+        // Find the view pager that will allow the user to swipe between fragments
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-    }
+        // Create an adapter that knows which fragment should be shown on each page
+        SampleFragmentPagerAdapter adapter = new SampleFragmentPagerAdapter(getSupportFragmentManager(), this);
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
     @Override
@@ -187,36 +154,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Fragment fragment = null;
-        Bundle bundle = new Bundle();
-
-        if (id == R.id.nav_home) {
-            fragment = new home();
-        } else if (id == R.id.nav_scale) {
-            fragment = new scale();
-        } else if (id == R.id.nav_sensors) {
-            fragment = new sensors();
-        }
-
-        if (id == R.id.nav_acercade) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Acerca de").setMessage("Esto es una aplicación IoT dedicada a hacerte la vida mas facil")
-                    .setNegativeButton("Cerrar", null)
-                    .show();
-        }
-
-        if (id == R.id.nav_settings) {
-            Intent i = new Intent(this, PreferenciasActivity.class);
-            startActivity(i);
-        }
-
-        if (id == R.id.nav_cerrar_sesion) {
-            new AlertDialog.Builder(this)
+    /*            new AlertDialog.Builder(this)
                     .setTitle("Cerrar sesión")
                     .setMessage("¿Quiere cerrar la sesión?")
                     .setNegativeButton("cancelar", null)
@@ -234,20 +172,7 @@ public class MainActivity extends AppCompatActivity
                                 }
                             });
                         }})
-                    .show();
-
-        }
-
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
+                    .show();*/
 
     /*@Override public void onDestroy() {
         super.onDestroy();

@@ -15,12 +15,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class SampleFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    final int PAGE_COUNT = 2;
+    final int PAGE_COUNT = 3;
     private int[] tabIcons = {
-            R.drawable.ic_scale,
-            R.drawable.ic_ruller
+            R.drawable.ic_menu_home,
+            R.drawable.ic_insert_chart_black_24dp,
+            R.drawable.ic_perm_identity_black_24dp
+
     };
-    private String tabTitles[] = new String[] { "PESO", "ALTURA" };
+    private String tabTitles[] = new String[] { "Home", "Histórico","Perfíl" };
     private Context context;
 
     public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
@@ -37,11 +39,14 @@ public class SampleFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                TabFragment2 tab1 = new TabFragment2();
+                TabFragment1 tab1 = new TabFragment1();
                 return tab1;
             case 1:
-                TabFragment1 tab2 = new TabFragment1();
+                TabFragment2 tab2 = new TabFragment2();
                 return tab2;
+            case 2:
+                TabFragment3 tab3 = new TabFragment3();
+                return tab3;
             default:
                 return null;
         }
