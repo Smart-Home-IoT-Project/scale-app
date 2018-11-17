@@ -1,13 +1,15 @@
 package com.gti.equipo4.smartapp.model;
 
+import java.util.Date;
+
 public class Weight {
     private double peso;
     private int altura;
-    private String hora;
+    private Date hora;
 
     public Weight() {}
 
-    public Weight(double peso,int altura,String hora) {
+    public Weight(double peso,int altura,Date hora) {
         this.peso = peso;
         this.hora = hora;
         this.altura = altura;
@@ -31,10 +33,10 @@ public class Weight {
     }
 
     public String getHora() {
-        return hora;
+        return hora.toString();
     }
 
-    public void setHora(String hora) {
+    public void setHora(Date hora) {
         this.hora = hora;
     }
 
