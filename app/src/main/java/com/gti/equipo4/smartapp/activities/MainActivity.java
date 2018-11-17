@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         // Start the thread
         t.start();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
     }
-    
+
 
     /*            new AlertDialog.Builder(this)
                     .setTitle("Cerrar sesión")
