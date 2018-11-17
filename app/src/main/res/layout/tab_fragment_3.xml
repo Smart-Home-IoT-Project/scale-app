@@ -1,117 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryBackground">
+    android:background="@color/browser_actions_bg_grey">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="198dp"
-        android:layout_height="156dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_peso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="Ultimas medida"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        android:background="@color/blue"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/ultimo_peso"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Peso :"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/ultima_altura"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/ultima_altura"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Altura :"
-        app:layout_constraintEnd_toStartOf="@+id/imc"
-        app:layout_constraintStart_toEndOf="@+id/ultimo_peso"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/imagen"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="0dp"
+                android:paddingTop="0dp"
+                android:src="@android:drawable/sym_def_app_icon" />
 
-    <TextView
-        android:id="@+id/imc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="IMC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ultima_altura"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/peso"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="8 kg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/altura"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ultimo_peso" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/altura"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="180 cm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ICM"
-        app:layout_constraintStart_toEndOf="@+id/peso"
-        app:layout_constraintTop_toBottomOf="@+id/ultima_altura" />
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="Manel Cuesta "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/ICM"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="89"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/altura"
-        app:layout_constraintTop_toBottomOf="@+id/imc" />
+            <TextView
+                android:id="@+id/correo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="manelcuestas123@gmail.com" />
+        </LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="401dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
