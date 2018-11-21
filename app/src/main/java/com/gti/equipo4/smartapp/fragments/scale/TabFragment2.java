@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -127,6 +128,12 @@ public class TabFragment2 extends Fragment {
 
                         chart.getAxisLeft().setDrawGridLines(false);
                         chart.getXAxis().setDrawGridLines(false);
+                        chart.getAxisLeft().setDrawLabels(false);
+                        chart.getAxisRight().setDrawLabels(false);
+                        chart.getXAxis().setDrawLabels(false);
+                        chart.getLegend().setEnabled(false);   // Hide the legend
+                        Legend l = chart.getLegend();
+                        l.setEnabled(false);
 
                         // Setting Data
                         LineData data = new LineData(dataSet);
