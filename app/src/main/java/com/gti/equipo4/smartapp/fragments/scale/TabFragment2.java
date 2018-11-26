@@ -18,6 +18,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -45,11 +47,17 @@ public class TabFragment2 extends Fragment {
     public static WeigthsFirestoreUI adaptador2;
     ArrayList<Entry> entries = new ArrayList<>();
     Context context = super.getContext();
+    FirebaseUser usuario;
+    String uidUsuario;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.tab_fragment_2, container, false);
+
+        usuario = FirebaseAuth.getInstance().getCurrentUser();
+        uidUsuario = usuario.getUid();
+
 
         final View view = inflater.inflate(R.layout.tab_fragment_2, container, false);
         final FragmentActivity c = getActivity();
@@ -59,7 +67,9 @@ public class TabFragment2 extends Fragment {
 
 
         Query query = FirebaseFirestore.getInstance()
-                .collection("Bascula")
+                .collection("Casa_1213") // TODO: Coger id de la casa dinamicamente
+                .document("bascula")
+                .collection(uidUsuario) // Documento del usuario
                 .orderBy("hora", Query.Direction.DESCENDING)
                 .limit(50);
         FirestoreRecyclerOptions<Weight> opciones = new FirestoreRecyclerOptions
@@ -72,7 +82,9 @@ public class TabFragment2 extends Fragment {
         final LineChart chart = (LineChart) view.findViewById(R.id.charto);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Bascula")
+        db.collection("Casa_1213") // TODO: Coger id de la casa dinamicamente
+                .document("bascula")
+                .collection(uidUsuario) // Documento del usuario
                 .orderBy("hora", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override

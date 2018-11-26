@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -25,15 +27,22 @@ import androidx.fragment.app.Fragment;
 import static com.firebase.ui.auth.ui.email.RegisterEmailFragment.TAG;
 
 public class TabFragment1 extends Fragment {
+    FirebaseUser usuario;
+    String uidUsuario;
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.tab_fragment_1, container, false);
+        usuario = FirebaseAuth.getInstance().getCurrentUser();
+        uidUsuario = usuario.getUid();
 
         final View view = inflater.inflate(R.layout.tab_fragment_1, container, false);
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Bascula")
+        db.collection("Casa_1213") // TODO: Coger id de la casa dinamicamente
+                .document("bascula")
+                .collection(uidUsuario) // Documento del usuario
                 .orderBy("hora", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
