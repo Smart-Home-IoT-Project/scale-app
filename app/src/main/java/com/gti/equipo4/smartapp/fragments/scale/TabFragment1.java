@@ -62,7 +62,11 @@ public class TabFragment1 extends Fragment {
                         }
                         //Log.d(TAG, "Current measures: " + measures.toArray()[0].toString());
                         TextView lastWeightMeasure =(TextView) view.findViewById(R.id.progress_circle_text);
-                        lastWeightMeasure.setText(measures.toArray()[0].toString()+"kg");
+                        if (measures.isEmpty()){
+                            lastWeightMeasure.setText("-");
+                        }else {
+                            lastWeightMeasure.setText(measures.toArray()[0].toString()+"kg");
+                        }
                     }
                 });
 
