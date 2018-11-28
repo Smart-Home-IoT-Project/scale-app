@@ -29,7 +29,7 @@ public abstract class Notifications extends Service {
             notificationManager.createNotificationChannel(notificationChannel);
         }
         NotificationCompat.Builder notificacion =
-                new NotificationCompat.Builder(MainActivity.this, CANAL_ID)
+                new NotificationCompat.Builder(this, CANAL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("Título")
                         .setContentText("Texto de la notificación.");
@@ -37,6 +37,7 @@ public abstract class Notifications extends Service {
                 this, 0, new Intent(this, MainActivity.class), 0);
         notificacion.setContentIntent(intencionPendiente);
         notificationManager.notify(NOTIFICACION_ID, notificacion.build());
+        return START_STICKY;
     }
     @Override public void onDestroy() {
         notificationManager.cancel(NOTIFICACION_ID);
