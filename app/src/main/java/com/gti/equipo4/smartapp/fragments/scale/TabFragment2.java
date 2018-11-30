@@ -111,7 +111,7 @@ public class TabFragment2 extends Fragment {
                         //dataSet.setColor(ContextCompat.getColor(context, R.color.black));
                         //dataSet.setValueTextColor(ContextCompat.getColor(context, R.color.white));
 
-                        //****
+                        /*
                         // Controlling X axis
                         XAxis xAxis = chart.getXAxis();
                         // Set the xAxis position to bottom. Default is top
@@ -126,7 +126,7 @@ public class TabFragment2 extends Fragment {
                             }
                         };
                         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
-                        xAxis.setValueFormatter(formatter);
+                        xAxis.setValueFormatter(formatter);*/
 
                         //***
                         // Controlling right side of y axis
