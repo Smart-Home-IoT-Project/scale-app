@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,6 +59,7 @@ public class TabFragment1 extends Fragment {
                             return;
                         }
 
+                        //Peso
                         List<Double> measures = new ArrayList<>();
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc.get("peso") != null) {
@@ -77,6 +79,35 @@ public class TabFragment1 extends Fragment {
                                 newNot.createNotification("Nueva medida",measures.toArray()[0].toString()+"kg");
                             }
                         }
+
+                        //Altura
+                        List<Double> alturas = new ArrayList<>();
+                        for (QueryDocumentSnapshot doc : value) {
+                            if (doc.get("altura") != null) {
+                                alturas.add(doc.getDouble("altura"));
+                                break;
+                            }
+                        }
+                        double alturaMetros = alturas.get(0) / 100 ;
+                        //Log.d(TAG, "Current measures: " + measures.toArray()[0].toString());
+                        TextView lastAltura =(TextView) view.findViewById(R.id.textView4);
+                        if (alturas.isEmpty()){
+                            lastAltura.setText("-");
+                        }else {
+                            lastAltura.setText(alturaMetros +"m");
+                        }
+
+                        //IMC
+                            double IMC = measures.get(0)/((alturas.get(0) / 100) * (alturas.get(0) / 100));
+                            TextView lastIMCValue =(TextView) view.findViewById(R.id.IMC_text);
+                            ProgressBar lastIMC =(ProgressBar) view.findViewById(R.id.progressBar3);
+                            if (alturas.isEmpty()){
+
+                            }else {
+                                lastIMCValue.setText("IMC "+  String.format("%.2f", IMC));
+                                lastIMC.setProgress((int)IMC);
+                            }
+
 
 
                         isFirstStart = false;
