@@ -19,6 +19,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.activities.Alerts;
 import com.gti.equipo4.smartapp.activities.MainActivity;
 import com.gti.equipo4.smartapp.activities.Notifications;
 
@@ -32,10 +33,14 @@ import androidx.fragment.app.Fragment;
 import static com.firebase.ui.auth.ui.email.RegisterEmailFragment.TAG;
 
 public class TabFragment1 extends Fragment {
+    // Alerts
+    Alerts alertManager;
+
     FirebaseUser usuario;
     String uidUsuario;
     boolean isFirstStart = true;
-    
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.tab_fragment_1, container, false);
@@ -43,6 +48,8 @@ public class TabFragment1 extends Fragment {
         uidUsuario = usuario.getUid();
 
         final View view = inflater.inflate(R.layout.tab_fragment_1, container, false);
+
+        alertManager = new Alerts(getActivity(),super.getContext());
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -77,6 +84,8 @@ public class TabFragment1 extends Fragment {
                             if (isFirstStart == false){
                                 Notifications newNot = new Notifications(TabFragment1.super.getContext());
                                 newNot.createNotification("Nueva medida",measures.toArray()[0].toString()+"kg");
+                                double tempMeasureValue = Double.parseDouble(measures.toArray()[0].toString());
+                                alertManager.checkWeigh(tempMeasureValue);
                             }
                         }
 
