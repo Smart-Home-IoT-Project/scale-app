@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -87,14 +88,24 @@ public class TabFragment1 extends Fragment {
                                 break;
                             }
                         }
+                        double alturaMetros = alturas.get(0) / 100 ;
                         //Log.d(TAG, "Current measures: " + measures.toArray()[0].toString());
                         TextView lastAltura =(TextView) view.findViewById(R.id.textView4);
                         if (alturas.isEmpty()){
                             lastAltura.setText("-");
                         }else {
-                            double alturaMetros = alturas.get(0) / 100 ;
                             lastAltura.setText(alturaMetros +"m");
                         }
+
+                        //IMC
+                            double IMC = measures.get(0)/((alturas.get(0) / 100) * (alturas.get(0) / 100));
+                            ProgressBar lastIMC =(ProgressBar) view.findViewById(R.id.progressBar3);
+                            if (alturas.isEmpty()){
+
+                            }else {
+                                lastIMC.setProgress((int)IMC);
+                            }
+
 
 
                         isFirstStart = false;
