@@ -1,6 +1,8 @@
 package com.gti.equipo4.smartapp.fragments.scale;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.activities.MainActivity;
+import com.gti.equipo4.smartapp.activities.Notifications;
 
 
 import java.util.ArrayList;
@@ -29,6 +33,7 @@ import static com.firebase.ui.auth.ui.email.RegisterEmailFragment.TAG;
 public class TabFragment1 extends Fragment {
     FirebaseUser usuario;
     String uidUsuario;
+    boolean isFirstStart = true;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +71,15 @@ public class TabFragment1 extends Fragment {
                             lastWeightMeasure.setText("-");
                         }else {
                             lastWeightMeasure.setText(measures.toArray()[0].toString()+"kg");
+
+                            if (isFirstStart == false){
+                                Notifications newNot = new Notifications(TabFragment1.super.getContext());
+                                newNot.createNotification("Nueva medida",measures.toArray()[0].toString()+"kg");
+                            }
                         }
+
+
+                        isFirstStart = false;
                     }
                 });
 
