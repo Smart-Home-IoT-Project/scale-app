@@ -99,10 +99,12 @@ public class TabFragment1 extends Fragment {
 
                         //IMC
                             double IMC = measures.get(0)/((alturas.get(0) / 100) * (alturas.get(0) / 100));
+                            TextView lastIMCValue =(TextView) view.findViewById(R.id.IMC_text);
                             ProgressBar lastIMC =(ProgressBar) view.findViewById(R.id.progressBar3);
                             if (alturas.isEmpty()){
 
                             }else {
+                                lastIMCValue.setText("IMC "+  String.format("%.2f", IMC));
                                 lastIMC.setProgress((int)IMC);
                             }
 
