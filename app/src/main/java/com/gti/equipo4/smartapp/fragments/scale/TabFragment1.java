@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.data.Entry;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
@@ -115,6 +116,48 @@ public class TabFragment1 extends Fragment {
                             }else {
                                 lastIMCValue.setText("IMC "+  String.format("%.2f", IMC));
                                 lastIMC.setProgress((int)IMC);
+                            }
+
+                        //TENDENCIA
+
+                        List<Double> entriesPeso = new ArrayList<>();
+                        List<Double> entriesAltura = new ArrayList<>();
+                        int i = 0;
+                        for (QueryDocumentSnapshot doc : value) {
+                            if (doc.get("peso") != null) {
+                                double measure = doc.getDouble("peso");
+                                entriesPeso.add(i, measure/100);
+                                i++;
+                            }
+                        }
+                        i = 0;
+                        for (QueryDocumentSnapshot doc : value) {
+                            if (doc.get("altura") != null) {
+                                double measure = doc.getDouble("altura");
+                                entriesAltura.add(i, measure);
+                                i++;
+                            }
+                        }
+
+                            double tendenciaPeso = entriesPeso.get(0) - entriesPeso.get(1);
+                            double tendenciaAltura = entriesAltura.get(1) - entriesAltura.get(0);
+                            TextView lasttendenciaPeso =(TextView) view.findViewById(R.id.TendenciaPeso);
+                            TextView lasttendenciaAltura =(TextView) view.findViewById(R.id.TendenciaAltura);
+
+                            if (entriesPeso.get(1) > entriesPeso.get(0)){
+                                lasttendenciaPeso.setText("▼ "+  String.format("%.2f", tendenciaPeso) + "kg");
+                            }else if (entriesPeso.get(1) < entriesPeso.get(0)){
+                                lasttendenciaPeso.setText("▲ "+  String.format("%.2f", tendenciaPeso) + "kg");
+                            }else{
+                                lasttendenciaPeso.setText("Has mantenido peso");
+                            }
+
+                            if (entriesAltura.get(1) > entriesAltura.get(0)){
+                                lasttendenciaAltura.setText("▼ "+  String.format("%.2f", tendenciaAltura) + "cm");
+                            }else if (entriesAltura.get(1) < entriesAltura.get(0)){
+                                lasttendenciaAltura.setText("▲ "+  String.format("%.2f", tendenciaAltura) + "cm");
+                            }else{
+                                lasttendenciaAltura.setText("Has mantenido altura");
                             }
 
 
