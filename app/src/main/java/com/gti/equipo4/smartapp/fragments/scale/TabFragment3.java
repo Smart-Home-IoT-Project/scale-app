@@ -88,6 +88,15 @@ public class TabFragment3 extends Fragment {
             }
         });
 
+        CardView card_view4 = (CardView) view.findViewById(R.id.cardView4); // creating a CardView and assigning a value.
+        card_view4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
+
+            }
+        });
+
         // Inicialización Volley (Hacer solo una vez en Singleton o Applicaction)
         RequestQueue colaPeticiones = Volley.newRequestQueue(super.getContext());
         ImageLoader lectorImagenes = new ImageLoader(colaPeticiones, new ImageLoader.ImageCache() {
