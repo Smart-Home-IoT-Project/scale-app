@@ -160,6 +160,9 @@ public class TabFragment1 extends Fragment {
                                 lasttendenciaAltura.setText("Has mantenido altura");
                             }
 
+                            //GOOGLE FIT
+
+
 
 
                         isFirstStart = false;
