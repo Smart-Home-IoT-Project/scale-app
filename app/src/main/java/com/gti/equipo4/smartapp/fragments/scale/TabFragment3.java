@@ -20,6 +20,7 @@ import com.gti.equipo4.smartapp.R;
 import com.gti.equipo4.smartapp.activities.PreferenciasActivity;
 import com.gti.equipo4.smartapp.adapters.WeigthsFirestoreUI;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,15 @@ public class TabFragment3 extends Fragment {
 
         TextView correo = (TextView) view.findViewById(R.id.correo);
         correo.setText(usuario.getEmail());
+
+        CardView card_view = (CardView) view.findViewById(R.id.cardView); // creating a CardView and assigning a value.
+        card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
+                launchPreferences();
+            }
+        });
 
         // Inicialización Volley (Hacer solo una vez en Singleton o Applicaction)
         RequestQueue colaPeticiones = Volley.newRequestQueue(super.getContext());
