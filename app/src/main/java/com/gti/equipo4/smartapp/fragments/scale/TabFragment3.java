@@ -1,5 +1,6 @@
 package com.gti.equipo4.smartapp.fragments.scale;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.activities.PreferenciasActivity;
 import com.gti.equipo4.smartapp.adapters.WeigthsFirestoreUI;
 
 import androidx.fragment.app.Fragment;
@@ -61,5 +63,10 @@ public class TabFragment3 extends Fragment {
         //return inflater.inflate(R.layout.tab_fragment_3, container, false);
         return view;
 
+    }
+
+    public void launchPreferences (){
+        Intent intent = new Intent(getActivity(), PreferenciasActivity.class);
+        startActivity(intent);
     }
 }
