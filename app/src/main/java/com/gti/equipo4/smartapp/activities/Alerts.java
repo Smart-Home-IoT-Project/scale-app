@@ -17,6 +17,8 @@ public class Alerts {
     double maxPesoValue;
     double minPesoValue;
 
+    boolean alertsEnabled;
+
 
     // Notification manager
     Notifications newNot;
@@ -34,18 +36,22 @@ public class Alerts {
     }
 
     public void checkWeigh(double value){
-        // Read preferences
-        maxPesoValue = getPreferences("maxPesoValue");
-        minPesoValue = getPreferences("minPesoValue");
+        alertsEnabled = Boolean.parseBoolean(sharedPreferences.getString("alertsEnabled", "0"));
+
+        if (alertsEnabled){
+            // Read preferences
+            maxPesoValue = getPreferences("maxPesoValue");
+            minPesoValue = getPreferences("minPesoValue");
 
 
-        // Check
-        if (value < minPesoValue){
-            newNot.createNotification("Alerta peso", "Pesas "+value+"kg, estas por debajo de tu peso ("+minPesoValue+"kg)");
-        }
+            // Check
+            if (value < minPesoValue){
+                newNot.createNotification("Alerta peso", "Pesas "+value+"kg, estas por debajo de tu peso ("+minPesoValue+"kg)");
+            }
 
-        if(value > maxPesoValue){
-            newNot.createNotification("Alerta peso", "Pesas "+value+"kg, estas por arriba de tu peso ("+maxPesoValue+"kg)");
+            if(value > maxPesoValue){
+                newNot.createNotification("Alerta peso", "Pesas "+value+"kg, estas por arriba de tu peso ("+maxPesoValue+"kg)");
+            }
         }
     }
 
