@@ -16,5 +16,6 @@
     <string name="basic_info">Información Básica</string>
     <string name="select_devie">Selecciona tu dispositivo</string>
 
+    <string name="title_activity_config_scale">ConfigScaleActivity</string>
 
 </resources>

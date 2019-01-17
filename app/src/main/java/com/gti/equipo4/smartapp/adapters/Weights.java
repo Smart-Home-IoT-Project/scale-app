@@ -56,8 +56,8 @@ public class Weights extends
 public static void personalizaVista(ViewHolder holder, Weight lugar) {
         String stringPeso = ""+lugar.getPeso();
         String stringAltura = ""+lugar.getAltura();
-        holder.peso.setText(stringPeso);
-        holder.altura.setText(stringAltura);
+        holder.peso.setText(stringPeso +" kg");
+        holder.altura.setText(stringAltura +" cm");
         holder.hora.setText(lugar.getHora());
 
 
