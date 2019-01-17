@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.gti.equipo4.smartapp.R;
+import com.gti.equipo4.smartapp.activities.ConfigScaleActivity;
 import com.gti.equipo4.smartapp.activities.LoginActivity;
 import com.gti.equipo4.smartapp.activities.MainActivity;
 import com.gti.equipo4.smartapp.activities.PreferenciasActivity;
@@ -93,7 +94,8 @@ public class TabFragment3 extends Fragment {
             @Override
             public void onClick(View v) {
                 // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
-
+                Intent i = new Intent(getActivity(), ConfigScaleActivity.class);
+                startActivity(i);
             }
         });
 

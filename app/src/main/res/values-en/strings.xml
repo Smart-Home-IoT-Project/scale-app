@@ -8,7 +8,6 @@
     <string name="action_settings">Settings</string>
     <string name="action_compartir">Share</string>
 
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -17,5 +16,6 @@
     <string name="basic_info">Basic Information</string>
     <string name="select_devie">Select your device</string>
 
+    <string name="title_activity_config_scale">ConfigScaleActivity</string>
 
 </resources>
