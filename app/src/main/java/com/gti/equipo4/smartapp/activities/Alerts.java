@@ -36,7 +36,7 @@ public class Alerts {
     }
 
     public void checkWeigh(double value){
-        alertsEnabled = Boolean.parseBoolean(sharedPreferences.getString("alertsEnabled", "0"));
+        alertsEnabled = sharedPreferences.getBoolean("alertsEnabled", true);
 
         if (alertsEnabled){
             // Read preferences
