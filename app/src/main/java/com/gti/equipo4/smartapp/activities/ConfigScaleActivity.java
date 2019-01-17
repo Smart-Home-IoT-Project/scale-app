@@ -15,10 +15,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -72,9 +75,61 @@ public class ConfigScaleActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // your code here.
                 // Toast.makeText( view.getContext(), "You Clicked at " + mDeviceList.get(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText( view.getContext(), "Bluetooth device: " + mDevices.get(position).toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText( view.getContext(), "Conectando con Bluetooth: " + mDevices.get(position).toString(), Toast.LENGTH_SHORT).show();
                 ConnectThread connectThread = new ConnectThread(mDevices.get(position));
                 connectThread.start();
+
+                // Iniciar formulario para introducir datos Wifi
+                LayoutInflater factory = LayoutInflater.from(view.getContext());
+                //text_entry is an Layout XML file containing two text field to display in alert dialog
+                final View textEntryView = factory.inflate(R.layout.wifi_dialog, null);
+
+                final EditText input1 = (EditText) textEntryView.findViewById(R.id.editText);
+                final EditText input2 = (EditText) textEntryView.findViewById(R.id.editText2);
+
+                input1.setText("SSID", TextView.BufferType.EDITABLE);
+                input2.setText("password", TextView.BufferType.EDITABLE);
+
+                final AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                alert.setIcon(R.drawable.ic_scale).setTitle("Datos WIFI:").setView(textEntryView).setPositiveButton("Guardar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int whichButton) {
+
+                                Log.i("AlertDialog","TextEntry 1 Entered "+input1.getText().toString());
+                                Log.i("AlertDialog","TextEntry 2 Entered "+input2.getText().toString());
+                                /* User clicked OK so do some stuff */
+                            }
+                        }).setNegativeButton("Cancelar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int whichButton) {
+                                /*
+                                 * User clicked cancel so do some stuff
+                                 */
+                            }
+                        });
+                alert.show();
+
+/*
+                final EditText entrada = new EditText(this);
+                entrada.setText("0");
+                new AlertDialog.Builder(this)
+                        .setTitle("Selección de lugar")
+                        .setMessage("indica su id:")
+                        .setView(entrada)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                long id = Long.parseLong(entrada.getText().toString());
+                                Intent i = new Intent(MainActivity.this, VistaLugarActivity.class);
+                                i.putExtra("id", id);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("Cancelar", null)
+                        .show();
+*/
+
             }
         });
 
